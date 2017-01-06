@@ -25,6 +25,15 @@ window.addEventListener('load', function() {
     });
   });
 
+  lock.on("authorization_error", function(error) {
+    lock.show({
+      flashMessage:{
+        type: 'error',
+        text: error.error_description
+      }
+    });
+  });
+
   var parseHash = function() {
     var id_token = localStorage.getItem('id_token');
     if (null != id_token) {
